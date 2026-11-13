@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>翡翠封鎖線</title>
+<style>html,body{margin:0;height:100%;background:#0d1510;color:#d9dccd;font-family:system-ui,sans-serif}
+#l{height:100%;display:grid;place-items:center;text-align:center}#l b{font-size:22px;letter-spacing:.2em}#l p{opacity:.6;font-size:13px}#l a{color:#66d2a8}</style>
+</head>
+<body>
+<div id="l"><div><b>翡翠封鎖線</b><p id="m">載入最新版本中…</p></div></div>
+<script>
+// 永遠抓最新的 game.html（不使用快取），所以網址固定 /wire/ 也會是最新版
+fetch('game.html?_=' + Date.now(), {cache: 'no-store'})
+  .then(function (r) { if (!r.ok) throw new Error(r.status); return r.text(); })
+  .then(function (html) { document.open(); document.write(html); document.close(); })
+  .catch(function () {
+    document.getElementById('m').innerHTML = '載入失敗，<a href="game.html">點這裡直接開啟</a>';
+  });
+</script>
+</body>
+</html>
